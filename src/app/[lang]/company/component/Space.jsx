@@ -95,6 +95,9 @@ export default function Space({ user }) {
 
 
    useEffect(() => {
+
+      console.log("space user",user)
+
       if (inputRef.current) {
          // console.log("inputRef", inputRef);
          const parser = new DOMParser();
