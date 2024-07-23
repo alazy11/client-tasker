@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 export default function MainContainer({ children,lang,dic,user }) {
 
-   // console.log('user....main',user);
+   console.log('user....main',user);
 
    const [showMenu, setShowMenu] = useState('');
    const [showOverlay, setShowOverlay] = useState('hidden');
