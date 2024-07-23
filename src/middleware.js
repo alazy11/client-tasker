@@ -19,7 +19,7 @@ function getLocale(request) {
 
 function authentication(req) {
    let token = req.cookies.get("token");
-   // console.log("tokkk....req",req.cookies.get('token'));
+   console.log("tokkk....req",req.cookies.get('token'));
    // console.log("url....req",req.url);
    // console.log("tokkk",req.cookies.get(''));
    // let token = true;
