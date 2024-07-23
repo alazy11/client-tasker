@@ -51,7 +51,12 @@ function handleFormSubmition(e,link,isSecretKey,setErrorMessage,setErrorText,rou
             setErrorMessage(false);
             // socket.connect();
             // socket.emit('user',data.data);
-            router.push('/en/company');
+
+            let a = document.createElement('a')
+            a.href = '/en/company'
+            a.click()
+
+            // router.push('/en/company');
             console.log(data)
          }
       }).catch(err=>{
@@ -88,8 +93,11 @@ function handleFormSubmition(e,link,isSecretKey,setErrorMessage,setErrorText,rou
             } else {
                // socket.connect();
                // socket.emit('user',data.data);
-               link.current.click();
-               console.log("link",link.current)
+               let a = document.createElement('a')
+               a.href = '/en/user'
+               a.click()
+               // link.current.click();
+               // console.log("link",link.current)
                // router.push('/en/user');
             }
             setErrorMessage(false);
