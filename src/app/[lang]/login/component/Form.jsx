@@ -52,9 +52,9 @@ function handleFormSubmition(e,link,isSecretKey,setErrorMessage,setErrorText,rou
             // socket.connect();
             // socket.emit('user',data.data);
 
-            let a = document.createElement('a')
-            a.href = '/en/company'
-            a.click()
+            // let a = document.createElement('a')
+            // a.href = '/en/company'
+            // a.click()
 
             // router.push('/en/company');
             console.log(data)
