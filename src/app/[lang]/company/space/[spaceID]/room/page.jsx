@@ -1,5 +1,5 @@
 
-import TopMiddleNav from './component/TopMiddleNav';
+import TopMiddleNav from '../component/TopMiddleNav';
 import TopInlineNav from '@/app/[lang]/company/component/TopInlineNav'
 
 export default function SpaceID({params}) {
