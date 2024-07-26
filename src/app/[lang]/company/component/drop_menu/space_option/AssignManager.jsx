@@ -61,7 +61,7 @@ export default function AssignManager({setSpaceOptionModel,setManagerModel,manag
 
     return(
         <li className="min-h-3 pe-2 ps-2">
-        <button className={` ${managerModel && "nav-menu-item-active"} p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded`} onClick={(e)=>{
+        <button className={` ${managerModel && "nav-menu-item-active"} p-2 flex items-center w-full gap-3 back-search-member rounded`} onClick={(e)=>{
             let rect = e.currentTarget.getBoundingClientRect();
             setTop((rect.top - 340) + 'px');
             setLeft((rect.left + rect.width) + 'px');

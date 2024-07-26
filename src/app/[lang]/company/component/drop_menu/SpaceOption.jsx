@@ -43,7 +43,7 @@ async function deleteSpace(spaceId, referesh, setProgress, setSave, setModel, se
 
 
 
-export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,spaceID,getSpace,setGetSpace,setMessage,setProgress,setSave,setSetting}) {
+export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,spaceID,getSpace,setGetSpace,setMessage,setProgress,setSave,setSetting,setRename}) {
 
    const[top, setTop] = useState("");
    const[left, setLeft] = useState("");
@@ -61,8 +61,10 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
          style={{ width: "100%", maxWidth: "100%" }}
       >
          <div
-            className="absolute z-2700 ltr:right-3 rtl:left-3 drop-menu-shadow bg-white border-e8eaed rounded-md min-w-40 overflow-y-auto flex flex-col pt-2 pb-2"
-            style={{ top:folderTop+'px',left:folderLeft+'px',width: "272px", top: "36%"}}
+            className="absolute z-2700 ltr:right-3 rtl:left-3 drop-menu-shadow border-e8eaed rounded-md min-w-40 overflow-y-auto flex flex-col pt-2 pb-2"
+            style={{ top:folderTop+'px',left:folderLeft+'px',width: "272px", top: "36%",
+               background: "var(--cu-background-menu)"
+            }}
          >
             <ul>
                <li className="border-bottom-e8eaed">
@@ -70,13 +72,10 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
 
                      <li className="min-h-3 pe-2 ps-2 ">
                         <button
-                           className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded"
-                           onClick={async (e) => {
-                              // await getSpace(
-                              //    projectID,
-                              //    setModel,
-                              //    // setEditModel
-                              // );
+                           className="p-2 flex items-center w-full gap-3 back-search-member rounded"
+                           onClick={(e)=>{
+                              setRename(true);
+                              setSpaceOptionModel(false)
                            }}
                         >
                            <span className="nav-menu-item__icon">
@@ -88,7 +87,9 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                         </button>
                      </li>
                      <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded">
+                        <button 
+                           className="p-2 flex items-center w-full gap-3 back-search-member rounded"
+                           >
                            <span className="nav-menu-item__icon">
                            <svg width={'1rem'} height={'1rem'} className="block " viewBox="0 0 24 24"><path fillRule="evenodd" d="M11.843 3.743a5.95 5.95 0 1 1 8.414 8.414l-2.55 2.55a1 1 0 0 1-1.414-1.414l2.55-2.55a3.95 3.95 0 1 0-5.586-5.586l-2.55 2.55a1 1 0 1 1-1.414-1.414l2.55-2.55zm2.45 4.55a1 1 0 1 1 1.414 1.414l-6 6a1 1 0 0 1-1.414-1.414l6-6zm-6.586 1a1 1 0 0 1 0 1.414l-2.55 2.55a3.95 3.95 0 0 0 5.586 5.586l2.55-2.55a1 1 0 1 1 1.414 1.414l-2.55 2.55a5.95 5.95 0 1 1-8.414-8.414l2.55-2.55a1 1 0 0 1 1.414 0z" clipRule="evenodd"></path></svg>
                            </span>
@@ -103,7 +104,9 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                <li className="border-bottom-e8eaed">
                   <ul className="pb-2 pt-2 flex flex-col gap-1.5">
                   <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded">
+                        <button 
+                           className="p-2 flex items-center w-full gap-3 back-search-member rounded"
+                           >
                            <span className="nav-menu-item__icon">
                            <svg width={'1rem'} height={'1rem'} className="block " viewBox="0 0 24 24">
                               <path fill-rule="evenodd" d="M13 4a1 1 0 1 0-2 0v7H4a1 1 0 1 0 0 2h7v7a1 1 0 1 0 2 0v-7h7a1 1 0 1 0 0-2h-7V4z" clip-rule="evenodd"></path>                           
@@ -121,7 +124,9 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                      </li>
 
                      <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded">
+                        <button 
+                           className="p-2 flex items-center w-full gap-3 back-search-member rounded"
+                           >
                            <span className="nav-menu-item__icon">
                            <svg width={'1rem'} height={'1rem'} className="block " viewBox="0 0 24 24">
 <path fill-rule="evenodd" d="M11.411 2.126c.12-.047.34-.126.589-.126.248 0 .468.079.589.126.148.059.303.136.458.222.31.172.676.412 1.072.705a19.17 19.17 0 0 1 2.683 2.444c1.833 2.011 3.698 4.905 3.698 8.14C20.5 18.272 16.677 22 12 22s-8.5-3.727-8.5-8.364c0-3.234 1.865-6.128 3.698-8.14a19.173 19.173 0 0 1 2.683-2.443c.396-.293.762-.533 1.072-.705.155-.086.31-.163.458-.222zM8.677 6.844C6.968 8.719 5.5 11.144 5.5 13.636 5.5 17.134 8.393 20 12 20s6.5-2.866 6.5-6.364c0-2.492-1.468-4.917-3.177-6.792a17.18 17.18 0 0 0-2.395-2.184A8.153 8.153 0 0 0 12 4.055a8.143 8.143 0 0 0-.928.605 17.173 17.173 0 0 0-2.395 2.184zm3.495-2.867zm-.332.004zM16 12.5a1 1 0 0 1 1 1 5 5 0 0 1-5 5 1 1 0 1 1 0-2 3 3 0 0 0 3-3 1 1 0 0 1 1-1z" clip-rule="evenodd"></path>                           </svg>
@@ -138,7 +143,9 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                      </li>
 
                      <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded" onClick={(e)=>{
+                        <button 
+                        className="p-2 flex items-center w-full gap-3 back-search-member rounded"
+                         onClick={(e)=>{
                            setSetting(true);
                            setSpaceOptionModel(false)
                         }}>
@@ -157,23 +164,6 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                            </div>
                         </button>
                      </li>
-
-                     {/* <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded" onClick={(e)=>{
-                           setSetting(true);
-                           setSpaceOptionModel(false)
-                        }}>
-                           <span className="nav-menu-item__icon">
-                           <svg width={'1rem'} height={'1rem'} className="block " viewBox="0 0 24 24"> 
-                           <path  fill-rule="evenodd" d="M12 5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm3.537 7.712a5.5 5.5 0 1 0-7.075 0c-2.912 1.227-5.047 3.926-5.454 7.163a1 1 0 0 0 1.984.25C5.425 16.678 8.392 14 12 14c3.607 0 6.575 2.678 7.008 6.125a1 1 0 1 0 1.984-.25c-.407-3.237-2.542-5.936-5.455-7.163Z" clip-rule="evenodd" ></path>
-                           </svg>
-                           </span>
-                           <span className="option-style text-2a2e34">
-                              Assign manager
-                           </span>
-                        </button>
-                     </li> */}
-
                      <AssignManager setSpaceOptionModel={setSpaceOptionModel}
                      setManagerModel={setManagerModel}
                      managerModel={managerModel}
@@ -191,7 +181,7 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                <li className="border-bottom-e8eaed">
                   <ul className="pb-2 pt-2 flex flex-col gap-1.5">
                   <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded">
+                        <button className="p-2 flex items-center w-full gap-3 back-search-member rounded">
                            <span className="nav-menu-item__icon">
                            <svg width={'1rem'} height={'1rem'} className="block " viewBox="0 0 24 24">
                            <path fill-rule="evenodd" d="M12 2.72a1 1 0 0 1 .901.567l2.37 4.931 5.422.73a1 1 0 0 1 .557 1.714l-3.958 3.777.982 5.383a1 1 0 0 1-1.459 1.06L12 18.283 7.185 20.88a1 1 0 0 1-1.459-1.06l.982-5.382-3.958-3.777a1 1 0 0 1 .557-1.714l5.422-.73 2.37-4.931A1 1 0 0 1 12 2.72zm0 3.31-1.701 3.54a1 1 0 0 1-.768.559l-3.894.523 2.842 2.713a1 1 0 0 1 .293.903l-.705 3.865 3.458-1.865a1 1 0 0 1 .95 0l3.458 1.865-.706-3.865a1 1 0 0 1 .294-.903l2.842-2.713-3.894-.523a1 1 0 0 1-.768-.558L12 6.029z" clip-rule="evenodd"></path>
@@ -204,7 +194,7 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
                      </li>
 
                      <li className="min-h-3 pe-2 ps-2">
-                        <button className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded">
+                        <button className="p-2 flex items-center w-full gap-3 back-search-member rounded">
                            <span className="nav-menu-item__icon">
                            <svg width={'1rem'} height={'1rem'} className="block " viewBox="0 0 24 24">
                            <path fill-rule="evenodd" d="M19 5H5v3h14V5zm.983 4.742A2 2 0 0 0 21 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3a2 2 0 0 0 1.016 1.742A2.18 2.18 0 0 0 4 10v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9c0-.087-.006-.174-.017-.258zM18 10H6v9h12v-9zm-9 3a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1z" clip-rule="evenodd"></path>
@@ -219,7 +209,7 @@ export default function SpaceOption({setSpaceOptionModel,folderLeft, folderTop,s
 
                      <li className="min-h-3 pe-2 ps-2">
                         <button
-                           className="p-2 flex items-center w-full gap-3 hover:bg-gray-100 rounded button-delete"
+                           className="p-2 flex items-center w-full gap-3 back-search-member rounded button-delete"
                            onClick={(e) => {
                               setMessage(
                                  "Delete Task Successfully"

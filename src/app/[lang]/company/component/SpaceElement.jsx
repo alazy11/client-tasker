@@ -7,7 +7,10 @@ import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import SpaceSetting from "./setting/SpaceSetting";
 
+
+
 const SpaceOption = dynamic(()=> import('./drop_menu/SpaceOption'));
+const RenameSpace = dynamic(()=> import('./space/RenameSpace'));
 // const SaveModel = dynamic(()=> import('./drop_menu/SpaceOption'));
 import SaveModel from '@/app/[lang]/component/SaveModel';
 
@@ -25,6 +28,9 @@ export default function SpaceElement({page,recordNumber,getSpace,setGetSpace}) {
    const [message, setMessage] = useState('');
    const [setting, setSetting] = useState(false);
    const [settingClose,setSettingClose] = useState(false);
+   const [rename, setRename] = useState(false);
+
+
 
    useEffect(()=>{
 
@@ -61,7 +67,7 @@ export default function SpaceElement({page,recordNumber,getSpace,setGetSpace}) {
                   newSpace?.map(item=>{
 
                      return (
-                  <li className={`rounded-md text-sm h-8	ltr:pr-1 rtl:pl-1 relative space-item-li hover:bg-gray-200 ${[`/en/company/space/${item.space_id}`,`/en/company/space/${item.space_id}/members`,`/en/company/space/${item.space_id}/projects`,`/en/company/space/${item.space_id}/chat`].includes(path) ? 'active-space' : ''}`} key={item.space_id}>
+                  <li className={`rounded-md text-sm h-8	ltr:pr-1 rtl:pl-1 relative space-item-li nav-item_ele ${[`/en/company/space/${item.space_id}`,`/en/company/space/${item.space_id}/members`,`/en/company/space/${item.space_id}/projects`,`/en/company/space/${item.space_id}/chat`].includes(path) ? 'active-space' : ''}`} key={item.space_id}>
                   <div className="flex items-center h-8">
                      <div className="text-gray-600 w-10 ltr:pl-2.5 rtl:pr-2.5">
                         <span className={`flex hide icon-space-color-324075 items-center justify-center w-5 h-5 rounded icon-space-size ${item.color}`}>
@@ -94,7 +100,7 @@ export default function SpaceElement({page,recordNumber,getSpace,setGetSpace}) {
                            {item.title}
                         </Link>
                         <div className="hidden items-center relative z-10 item">
-                           <button className="text-gray-500 rounded icon-padding flex items-center justify-center hover:bg-gray-300 item-s-color" data-space = {item.space_id} onClick={(e)=>{
+                           <button className="rounded icon-padding icon-space-option flex items-center justify-center  item-s-color" data-space = {item.space_id} onClick={(e)=>{
                               setSpaceID(e.currentTarget.dataset.space);
                               setSpaceOptionModel(true);
                               let left = e.currentTarget.closest('.space-item-li').clientWidth;
@@ -115,7 +121,7 @@ export default function SpaceElement({page,recordNumber,getSpace,setGetSpace}) {
                                  <path d="M5 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"></path>
                               </svg>
                            </button>
-                           <button className="text-gray-500 rounded icon-padding flex items-center justify-center hover:bg-gray-300 item-s-color">
+                           <button className="rounded icon-padding icon-space-option flex items-center justify-center  item-s-color">
                               <svg
                                  className="block icon-size"
                                  fill="none"
@@ -152,6 +158,7 @@ export default function SpaceElement({page,recordNumber,getSpace,setGetSpace}) {
             setSave={setSave}
             setMessage={setMessage}
             setSetting={setSetting}
+            setRename={setRename}
             />
          }
          
@@ -167,6 +174,11 @@ export default function SpaceElement({page,recordNumber,getSpace,setGetSpace}) {
 setting && <SpaceSetting spaceID={spaceID} setSetting={setSetting} setSettingClose={setSettingClose} settingClose={settingClose} />
 
          }
+
+{
+            rename && <RenameSpace  setRename={setRename} />
+         }
+
       
       </>
    );

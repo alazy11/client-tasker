@@ -6,14 +6,17 @@ import SideNavBar from './SideNavBar';
 import { useState } from 'react';
 // import TopInlineNav from './TopInlineNav';
 
+import CompanyInformation, { CompanyProvider } from './UserContext';
+
 export default function MainContainer({ children,lang,dic,user }) {
 
-   console.log('user....main',user);
+   // console.log('user....main',user);
 
    const [showMenu, setShowMenu] = useState('');
    const [showOverlay, setShowOverlay] = useState('hidden');
 
    return (
+      <CompanyProvider>
       <div className={` vertical ${showMenu} flex flex-col min-h-svh ` + "full ltr main-section antialiased relative text-sm font-normal"}>
          <div className={`overlay  fixed inset-0 bg-[black]/60 z-50 lg:hidden ${showOverlay}`} onClick={(e)=>{
 
@@ -44,5 +47,7 @@ if(showOverlay === '') {
       </div>
       </div>
       </div>
+      </CompanyProvider>
+
    );
 }
